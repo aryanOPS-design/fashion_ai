@@ -1,0 +1,36 @@
+from fastapi import FastAPI, UploadFile, File, Form
+from fastapi.responses import FileResponse
+import os, shutil, zipfile
+
+from generator.engine import build_carousel
+
+app = FastAPI()
+
+@app.post("/generate")
+async def generate(
+    product_name: str = Form(...),
+    price: str = Form(...),
+    image: UploadFile = File(...)
+):
+
+    os.makedirs("input", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
+
+    image_path = f"input/{image.filename}"
+
+    with open(image_path, "wb") as f:
+        shutil.copyfileobj(image.file, f)
+
+    content = {
+        "product_name": product_name,
+        "price": price,
+        "image_path": image_path,
+        "features": ["Premium Quality", "Streetwear Fit", "Limited Edition"],
+        "uses": ["Daily Wear", "Street Style", "Outfits"]
+    }
+
+    output_folder = f"output/{product_name}"
+
+    build_carousel(content, "streetwear", output_folder)
+
+    return {"status": "done"}
