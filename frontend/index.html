@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionAI - AI Carousel Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">FashionAI</div>
+    </nav>
+
+    <section class="hero">
+
+        <div class="badge">
+            FashionAI • SaaS Beta
+        </div>
+
+        <h1>
+            Generate Viral Fashion Carousels
+            From A Single Product Image
+        </h1>
+
+        <p>
+            Upload one image. Generate a premium 5-slide Instagram carousel in seconds.
+            No design skills required.
+        </p>
+
+    </section>
+
+    <section class="generator-card">
+
+        <div class="card-title">
+            Create Your Carousel
+        </div>
+
+        <form id="generatorForm">
+
+            <label>Product Name</label>
+            <input
+                type="text"
+                name="product_name"
+                placeholder="Oversized Streetwear Hoodie"
+                required
+            >
+
+            <label>Price</label>
+            <input
+                type="text"
+                name="price"
+                placeholder="₹1499"
+                required
+            >
+
+            <label>Product Image</label>
+
+            <input
+                type="file"
+                name="image"
+                id="imageInput"
+                accept="image/*"
+                required
+            >
+
+            <div id="preview-container" style="margin-top:20px;">
+                <img
+                    id="preview"
+                    style="
+                    width:100%;
+                    display:none;
+                    border-radius:18px;
+                    max-height:400px;
+                    object-fit:contain;
+                    "
+                >
+            </div>
+
+            <button type="submit">
+                Generate Carousel
+            </button>
+
+        </form>
+
+        <div id="status"></div>
+
+    </section>
+
+    <section style="
+    text-align:center;
+    padding:40px;
+    color:#888;
+    font-size:14px;
+    ">
+        Powered by FashionAI
+    </section>
+
+    <script src="app.js"></script>
+
+    <script>
+        const imageInput = document.getElementById("imageInput");
+        const preview = document.getElementById("preview");
+
+        imageInput.addEventListener("change", function(){
+
+            const file = this.files[0];
+
+            if(file){
+
+                preview.src = URL.createObjectURL(file);
+
+                preview.style.display = "block";
+            }
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#050505;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Background Glow */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+        radial-gradient(circle at top left,
+        rgba(124,58,237,.25),
+        transparent 35%),
+
+        radial-gradient(circle at bottom right,
+        rgba(37,99,235,.25),
+        transparent 35%);
+
+    pointer-events:none;
+}
+
+/* Navbar */
+
+nav{
+    max-width:1400px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:30px;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+/* Hero */
+
+.hero{
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+
+    padding:90px 20px 50px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    margin-bottom:30px;
+
+    backdrop-filter:blur(20px);
+}
+
+/* Typing Animation */
+
+.typing{
+    width:max-content;
+    margin:auto;
+
+    overflow:hidden;
+    white-space:nowrap;
+
+    border-right:3px solid white;
+
+    animation:
+        typing 3s steps(40,end),
+        blink .8s infinite;
+}
+
+@keyframes typing{
+    from{
+        width:0;
+    }
+
+    to{
+        width:100%;
+    }
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
+.hero h1{
+    font-size:84px;
+    font-weight:900;
+
+    letter-spacing:-4px;
+
+    line-height:.95;
+
+    max-width:1100px;
+
+    margin:auto;
+}
+
+.hero p{
+    max-width:700px;
+
+    margin:30px auto;
+
+    font-size:20px;
+
+    color:#b5b5b5;
+}
+
+/* Form Card */
+
+.generator-card{
+
+    width:820px;
+
+    max-width:95%;
+
+    margin:50px auto 120px;
+
+    background:#0c0c0c;
+
+    border:1px solid #1f1f1f;
+
+    border-radius:32px;
+
+    padding:50px;
+
+    box-shadow:
+    0 20px 80px rgba(0,0,0,.55);
+}
+
+.card-title{
+    font-size:32px;
+    font-weight:800;
+
+    margin-bottom:25px;
+}
+
+/* Labels */
+
+label{
+    display:block;
+
+    margin-top:20px;
+    margin-bottom:10px;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+}
+
+/* Inputs */
+
+input{
+    width:100%;
+
+    background:#080808;
+
+    border:2px solid #202020;
+
+    color:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+input::placeholder{
+    color:#7a7a7a;
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:#7c3aed;
+
+    box-shadow:
+    0 0 0 4px rgba(124,58,237,.20);
+}
+
+/* Image Preview */
+
+#preview{
+    margin-top:15px;
+
+    width:100%;
+
+    border-radius:18px;
+
+    border:1px solid #222;
+}
+
+/* Button */
+
+button{
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:22px;
+
+    border:none;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8b5cf6,
+        #2563eb
+    );
+
+    transition:.25s;
+}
+
+button:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.01);
+}
+
+/* Status */
+
+#status{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    font-size:15px;
+}
+
+.success{
+    color:#22c55e;
+}
+
+.error{
+    color:#ef4444;
+}
+
+.loading{
+    color:#60a5fa;
+}
+
+/* Footer */
+
+footer{
+
+    text-align:center;
+
+    padding:50px;
+
+    color:#777;
+
+    font-size:14px;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .hero h1{
+
+        font-size:52px;
+
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+
+        font-size:18px;
+    }
+
+    .generator-card{
+
+        padding:30px;
+    }
+}

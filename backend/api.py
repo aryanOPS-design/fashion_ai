@@ -5,6 +5,11 @@ import os, shutil, zipfile
 from generator.engine import build_carousel
 
 app = FastAPI()
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"status": "alive"}
 
 @app.post("/generate")
 async def generate(
@@ -33,4 +38,21 @@ async def generate(
 
     build_carousel(content, "streetwear", output_folder)
 
-    return {"status": "done"}
+zip_path = f"{output_folder}.zip"
+
+with zipfile.ZipFile(zip_path, "w") as zipf:
+
+    for file in os.listdir(output_folder):
+
+        file_path = os.path.join(output_folder, file)
+
+        zipf.write(
+            file_path,
+            arcname=file
+        )
+        
+    return FileResponse(
+    zip_path,
+    media_type="application/zip",
+    filename=f"{product_name}.zip"
+)
