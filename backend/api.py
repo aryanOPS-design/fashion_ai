@@ -5,7 +5,6 @@ import os, shutil, zipfile
 from generator.engine import build_carousel
 
 app = FastAPI()
-app = FastAPI()
 
 @app.get("/")
 def root():
