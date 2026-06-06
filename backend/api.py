@@ -33,25 +33,25 @@ async def generate(
         "uses": ["Daily Wear", "Street Style", "Outfits"]
     }
 
-    output_folder = f"output/{product_name}"
+    o    output_folder = f"output/{product_name}"
 
     build_carousel(content, "streetwear", output_folder)
 
-zip_path = f"{output_folder}.zip"
+    zip_path = f"{output_folder}.zip"
 
-with zipfile.ZipFile(zip_path, "w") as zipf:
+    with zipfile.ZipFile(zip_path, "w") as zipf:
 
-    for file in os.listdir(output_folder):
+        for file in os.listdir(output_folder):
 
-        file_path = os.path.join(output_folder, file)
+            file_path = os.path.join(output_folder, file)
 
-        zipf.write(
-            file_path,
-            arcname=file
-        )
-        
+            zipf.write(
+                file_path,
+                arcname=file
+            )
+
     return FileResponse(
-    zip_path,
-    media_type="application/zip",
-    filename=f"{product_name}.zip"
-)
+        zip_path,
+        media_type="application/zip",
+        filename=f"{product_name}.zip"
+    )
